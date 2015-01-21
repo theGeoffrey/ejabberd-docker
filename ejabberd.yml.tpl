@@ -563,24 +563,24 @@ language: "en"
 ## Modules enabled in all ejabberd virtual hosts.
 ##
 modules:
-  ##  mod_adhoc: {}
+  ##  mod_adhoc:
   ##  mod_announce: # recommends mod_adhoc
   ##    access: announce
-  mod_blocking: {} # requires mod_privacy
-  mod_caps: {}
-  mod_carboncopy: {}
+  mod_blocking: # requires mod_privacy
+  mod_caps:
+  mod_carboncopy:
   mod_client_state:
     drop_chat_states: true
     queue_presence: false
-  ##mod_configure: {} # requires mod_adhoc
-  mod_disco: {}
-  ## mod_echo: {}
-  ##mod_irc: {}
-  mod_http_bind: {}
+  ##mod_configure: # requires mod_adhoc
+  mod_disco:
+  ## mod_echo:
+  ##mod_irc:
+  mod_http_bind:
   ## mod_http_fileserver:
   ##   docroot: "/var/www"
   ##   accesslog: "/var/log/ejabberd/access.log"
-  ##mod_last: {}
+  ##mod_last:
   mod_muc:
     host: "muc.@HOST@"
     access: muc
@@ -589,16 +589,17 @@ modules:
     access_admin: muc_admin
     history_size: 40
     max_users: 1000
-  ##mod_muc_log: {}
+  ##mod_muc_log:
   mod_offline:
     access_max_user_messages: max_user_offline_messages
-  mod_ping: {}
+  mod_ping:
   ## mod_pres_counter:
   ##   count: 5
   ##   interval: 60
-  mod_privacy: {}
-  mod_private: {}
-  ## mod_proxy65: {}
+  mod_privacy:
+    db_type: internal
+  mod_private:
+  ## mod_proxy65:
   mod_pubsub:
     access_createnode: pubsub_createnode
     ## reduces resource comsumption, but XEP incompliant
@@ -649,12 +650,12 @@ modules:
     ## access_from: deny
 
     ##access: register
-  mod_roster: {}
-  mod_shared_roster: {}
-  mod_stats: {}
-  mod_time: {}
-  ##mod_vcard: {}
-  mod_version: {}
+  mod_roster:
+  mod_shared_roster:
+  mod_stats:
+  mod_time:
+  ##mod_vcard:
+  mod_version:
 
 ##
 ## Enable modules with custom options in a specific virtual host
