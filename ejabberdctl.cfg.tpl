@@ -134,7 +134,7 @@ ERL_OPTIONS="{{ env['ERL_OPTIONS'] or "-noshell" }}"
 #
 # Default: ejabberd@localhost
 #
-ERLANG_NODE={{ env['ERLANG_NODE'] or "ejabberd@localhost" }}
+ERLANG_NODE={{ env['ERLANG_NODE'] or "ejabberd@chat.thegeoffrey.co" }}
 
 #.
 #' EJABBERD_PID_PATH: ejabberd PID file
