@@ -128,9 +128,9 @@ listen:
     max_stanza_size: 65536
     shaper: c2s_shaper
     access: c2s
-  -
-    port: 5269
-    module: ejabberd_s2s_in
+##  -
+##    port: 5269
+##    module: ejabberd_s2s_in
   ##
   ## ejabberd_service: Interact with external components (transports, ...)
   ##
@@ -158,10 +158,10 @@ listen:
   ## To handle XML-RPC requests that provide admin credentials:
   ##
   -
-    port: 4560
+    port: 5000
     module: ejabberd_xmlrpc
   -
-    port: 5280
+    port: 80
     module: ejabberd_http
     ## request_handlers:
     ##   "/pub/archive": mod_http_fileserver
@@ -563,31 +563,33 @@ language: "en"
 ## Modules enabled in all ejabberd virtual hosts.
 ##
 modules:
-  mod_adhoc: {}
-  mod_announce: # recommends mod_adhoc
-    access: announce
+  ##  mod_adhoc: {}
+  ##  mod_announce: # recommends mod_adhoc
+  ##    access: announce
   mod_blocking: {} # requires mod_privacy
   mod_caps: {}
   mod_carboncopy: {}
   mod_client_state:
     drop_chat_states: true
     queue_presence: false
-  mod_configure: {} # requires mod_adhoc
+  ##mod_configure: {} # requires mod_adhoc
   mod_disco: {}
   ## mod_echo: {}
-  mod_irc: {}
+  ##mod_irc: {}
   mod_http_bind: {}
   ## mod_http_fileserver:
   ##   docroot: "/var/www"
   ##   accesslog: "/var/log/ejabberd/access.log"
   mod_last: {}
   mod_muc:
-    ## host: "conference.@HOST@"
+    host: "muc.@HOST@"
     access: muc
     access_create: muc_create
     access_persistent: muc_create
     access_admin: muc_admin
-  ## mod_muc_log: {}
+    history_size: 40
+    max_users: 1000
+  ##mod_muc_log: {}
   mod_offline:
     access_max_user_messages: max_user_offline_messages
   mod_ping: {}
@@ -608,7 +610,7 @@ modules:
       - "flat"
       - "hometree"
       - "pep" # pep requires mod_caps
-  mod_register:
+  ##mod_register:
     ##
     ## Protect In-Band account registrations with CAPTCHA.
     ##
@@ -623,11 +625,11 @@ modules:
     ## After successful registration, the user receives
     ## a message with this subject and body.
     ##
-    welcome_message:
-      subject: "Welcome!"
-      body: |-
-        Hi.
-        Welcome to this XMPP server.
+    ##welcome_message:
+      ##subject: "Welcome!"
+      ##body: |-
+        ##Hi.
+        ##Welcome to this XMPP server.
 
     ##
     ## When a user registers, send a notification to
@@ -646,12 +648,12 @@ modules:
     ##
     ## access_from: deny
 
-    access: register
+    ##access: register
   mod_roster: {}
   mod_shared_roster: {}
   mod_stats: {}
   mod_time: {}
-  mod_vcard: {}
+  ##mod_vcard: {}
   mod_version: {}
 
 ##
