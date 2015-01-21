@@ -158,10 +158,10 @@ listen:
   ## To handle XML-RPC requests that provide admin credentials:
   ##
   -
-    port: 5000
+    port: 8080
     module: ejabberd_xmlrpc
   -
-    port: 80
+    port: 5000
     module: ejabberd_http
     ## request_handlers:
     ##   "/pub/archive": mod_http_fileserver
