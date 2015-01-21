@@ -580,7 +580,7 @@ modules:
   ## mod_http_fileserver:
   ##   docroot: "/var/www"
   ##   accesslog: "/var/log/ejabberd/access.log"
-  mod_last: {}
+  ##mod_last: {}
   mod_muc:
     host: "muc.@HOST@"
     access: muc
