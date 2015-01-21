@@ -234,7 +234,7 @@ auth_method:
 ##
 ## Store the plain passwords or hashed for SCRAM:
 ## auth_password_format: plain
-## auth_password_format: scram
+auth_password_format: scram
 ##
 ## Define the FQDN if ejabberd doesn't detect it:
 ## fqdn: "server3.example.com"
