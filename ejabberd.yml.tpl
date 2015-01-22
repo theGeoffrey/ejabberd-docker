@@ -108,7 +108,7 @@ hosts:
 ##
 listen:
   -
-    port: 5222
+    port: 5223
     module: ejabberd_c2s
     ##
     ## If TLS is compiled in and you installed a SSL
@@ -155,7 +155,7 @@ listen:
   ## ejabberd_stun: Handles STUN Binding requests
   ##
   -
-    port: 3478
+    port: 3479
     transport: udp
     module: ejabberd_stun
 
@@ -163,7 +163,7 @@ listen:
   ## To handle XML-RPC requests that provide admin credentials:
   ##
   -
-    port: 4560
+    port: 4561
     module: ejabberd_xmlrpc
   -
     port: 5000
