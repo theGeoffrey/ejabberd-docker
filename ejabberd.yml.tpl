@@ -2,6 +2,7 @@
 ###               ejabberd configuration file
 ###
 ###
+{% set uses_db='DATABASE_URL' in env %}
 
 ### The parameters used in this configuration file are explained in more detail
 ### in the ejabberd Installation and Operation Guide.
@@ -343,6 +344,18 @@ Anonymous login support:
 
 ##
 ## PostgreSQL server:
+{% if uses_db %}
+
+{% set db_url = env['DATABASE_URL'].split("//", 1)[1] %}
+odbc_type: pgsql
+odbc_database: "{db_url.rsplit('/', 1)[1]}"
+odbc_port: {db_url.rsplit('/', 1)[0].rsplit(':', 1)[1]}
+odbc_server: "{db_url.rsplit('/', 1)[0].rsplit(':', 1)[0].rsplit("@", 1)[1]}"
+odbc_username: "{db_url.rsplit('@', 1)[0].split(":")[0]"
+odbc_password: "{db_url.rsplit('@', 1)[0].split(":")[1]"
+pgsql_users_number_estimate: true
+
+{% endif %}
 ##
 ## odbc_type: pgsql
 ## odbc_server: "server"
@@ -569,6 +582,9 @@ language: "en"
 modules:
   ##  mod_adhoc: {}
   ##  mod_announce: # recommends mod_adhoc
+{%- if uses_db %}
+##        db_type: odbc
+{%- endif %}
   ##    access: announce
   mod_blocking: {} # requires mod_privacy
   mod_caps: {}
@@ -584,7 +600,10 @@ modules:
   ## mod_http_fileserver:
   ##   docroot: "/var/www"
   ##   accesslog: "/var/log/ejabberd/access.log"
-  mod_last: {}
+  mod_last:
+{%- if uses_db %}
+    db_type: odbc
+{%- endif %}
   mod_muc:
     host: "muc.@HOST@"
     access: muc
@@ -593,15 +612,27 @@ modules:
     access_admin: muc_admin
     history_size: 40
     max_users: 1000
+{%- if uses_db %}
+    db_type: odbc
+{%- endif %}
   ##mod_muc_log: {}
   mod_offline:
     access_max_user_messages: max_user_offline_messages
+{%- if uses_db %}
+    db_type: odbc
+{%- endif %}
   mod_ping: {}
   ## mod_pres_counter:
   ##   count: 5
   ##   interval: 60
-  mod_privacy: {}
-  mod_private: {}
+  mod_privacy:
+{%- if uses_db %}
+    db_type: odbc
+{%- endif %}
+  mod_private:
+{%- if uses_db %}
+    db_type: odbc
+{%- endif %}
   ## mod_proxy65: {}
   mod_pubsub:
     access_createnode: pubsub_createnode
@@ -653,11 +684,20 @@ modules:
     ## access_from: deny
 
     ##access: register
-  mod_roster: {}
-  mod_shared_roster: {}
+  mod_roster:
+{%- if uses_db %}
+    db_type: odbc
+{%- endif %}
+  mod_shared_roster:
+{%- if uses_db %}
+    db_type: odbc
+{%- endif %}
   mod_stats: {}
   mod_time: {}
-  ##mod_vcard: {}
+  ##mod_vcard:
+{%- if uses_db %}
+##    db_type: odbc
+{%- endif %}
   mod_version: {}
 
 ##
