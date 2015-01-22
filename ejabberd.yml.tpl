@@ -163,7 +163,7 @@ listen:
   ## To handle XML-RPC requests that provide admin credentials:
   ##
   -
-    port: 4561
+    port: 4560
     module: ejabberd_xmlrpc
   -
     port: 5000
