@@ -84,8 +84,12 @@ log_rate_limit: 100
 ##   - "example.com"
 ##   - "example.org"
 ##
+{% set host_names=env.get('HOSTS', '').split(',') %}
 hosts:
   - "{{ env['XMPP_DOMAIN'] or "chat.thegeoffrey.co" }}"
+  {%- for host in host_names %}
+  - "{host}"
+  {%- endfor %}
 
 ##
 ## route_subdomains: Delegate subdomains to other XMPP servers.
