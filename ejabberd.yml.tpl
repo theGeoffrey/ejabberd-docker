@@ -344,18 +344,17 @@ Anonymous login support:
 
 ##
 ## PostgreSQL server:
-{% if uses_db %}
-
-{% set db_url = env['DATABASE_URL'].split("//", 1)[1] %}
+{%- if uses_db -%}
+{%- set db_url = env['DATABASE_URL'].split('//', 1)[1] -%}
 odbc_type: pgsql
-odbc_database: "{db_url.rsplit('/', 1)[1]}"
-odbc_port: {db_url.rsplit('/', 1)[0].rsplit(':', 1)[1]}
-odbc_server: "{db_url.rsplit('/', 1)[0].rsplit(':', 1)[0].rsplit("@", 1)[1]}"
-odbc_username: "{db_url.rsplit('@', 1)[0].split(":")[0]}"
-odbc_password: "{db_url.rsplit('@', 1)[0].split(":")[1]}"
+odbc_database: "{{db_url.rsplit('/', 1)[1]}}"
+odbc_port: {{db_url.rsplit('/', 1)[0].rsplit(':', 1)[1]}}
+odbc_server: "{{db_url.rsplit('/', 1)[0].rsplit(':', 1)[0].rsplit("@", 1)[1]}}"
+odbc_username: "{{db_url.rsplit('@', 1)[0].split(":")[0]}}"
+odbc_password: "{{db_url.rsplit('@', 1)[0].split(":")[1]}}"
 pgsql_users_number_estimate: true
 
-{% endif %}
+{%- endif %}
 ##
 ## odbc_type: pgsql
 ## odbc_server: "server"
