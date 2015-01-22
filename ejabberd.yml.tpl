@@ -121,13 +121,13 @@ listen:
     ## To enforce TLS encryption for client connections,
     ## use this instead of the "starttls" option:
     ##
-    ## starttls_required: true
+    starttls_required: true
     ##
     ## Custom OpenSSL options
     ##
-    ## protocol_options:
-    ##   - "no_sslv3"
-    ##   - "no_tlsv1"
+    protocol_options:
+      - "no_sslv3"
+      - "no_tlsv1"
     certfile: "/opt/ejabberd/ssl/xmpp_domain.pem"
     starttls: true
     max_stanza_size: 65536
@@ -154,16 +154,16 @@ listen:
   ##
   ## ejabberd_stun: Handles STUN Binding requests
   ##
-  ## -
-  ##   port: 3478
-  ##   transport: udp
-  ##   module: ejabberd_stun
+  -
+    port: 3478
+    transport: udp
+    module: ejabberd_stun
 
   ##
   ## To handle XML-RPC requests that provide admin credentials:
   ##
   -
-    port: 8080
+    port: 4560
     module: ejabberd_xmlrpc
   -
     port: 5000
