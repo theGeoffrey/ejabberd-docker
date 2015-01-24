@@ -234,6 +234,7 @@ s2s_certfile: "/opt/ejabberd/ssl/host.pem"
 ##
 auth_method:
 ##  - internal
+  - external
   - anonymous
 
 ##
@@ -249,7 +250,7 @@ auth_method:
 ## Make sure the script is executable by ejabberd.
 ##
 ## auth_method: external
-## extauth_program: "/path/to/authentication/script"
+extauth_program: "/opt/ejabberd/bin/ext_auth"
 
 ##
 ## Authentication using ODBC
