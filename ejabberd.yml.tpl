@@ -89,7 +89,7 @@ log_rate_limit: 100
 hosts:
   - "{{ env['XMPP_DOMAIN'] or "chat.thegeoffrey.co" }}"
   {%- for host in host_names %}
-  - "{host}"
+  - "{{host}}"
   {%- endfor %}
 
 ##
@@ -380,7 +380,7 @@ pgsql_users_number_estimate: true
 ##
 ## Number of connections to open to the database for each virtual host
 ##
-## odbc_pool_size: 10
+odbc_pool_size: 10
 
 ##
 ## Interval to make a dummy SQL request to keep the connections to the
